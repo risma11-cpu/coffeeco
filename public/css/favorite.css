@@ -1,0 +1,218 @@
+/* =====================================================
+   FAVORIT (setelah menu)
+   Gelas Caramel Flavour terbang dari kartu menu ke sini.
+   Pergerakannya diatur oleh public/js/favorite.js
+   ===================================================== */
+
+.fav {
+    position: relative;
+    background: var(--color-yellow);
+    color: var(--color-brown);
+}
+
+.fav__inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: clamp(64px, 8vw, 120px) clamp(20px, 4.44vw, 64px);
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: clamp(32px, 5vw, 80px);
+    align-items: center;
+}
+
+/* ---------- Panggung gelas (kiri) ---------- */
+.fav__stage {
+    --slot: clamp(220px, 25vw, 360px);
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+/* Panel krem di belakang gelas (gelasnya menyembul keluar dari atas panel, seperti di kartu menu) */
+.fav__panel {
+    position: absolute;
+    left: 50%;
+    bottom: calc(var(--slot) * 0.06);
+    width: calc(var(--slot) * 1.55);
+    height: calc(var(--slot) * var(--ratio, 1.4775) * 0.74);
+    transform: translateX(-50%);
+    border-radius: 24px;
+    background: var(--color-cream);
+}
+
+.fav__slot {
+    position: relative;
+    width: var(--slot);
+    aspect-ratio: 1 / var(--ratio, 1.4775);
+}
+
+.fav__cup {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    filter: drop-shadow(0 18px 26px rgba(64, 38, 29, 0.35));
+}
+
+/* ---------- Teks (kanan) ---------- */
+.fav__content {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.fav__eyebrow {
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 1.8px;
+}
+
+.fav__title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(40px, 4.58vw, 66px);
+    line-height: 1.1;
+}
+
+.fav__title span {
+    display: block;
+}
+
+.fav__intro {
+    max-width: 520px;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.fav__reasons {
+    list-style: none;
+    margin: 6px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    max-width: 560px;
+}
+
+.fav__reason {
+    display: flex;
+    gap: 20px;
+    padding: 18px 0;
+    border-top: 1px solid rgba(64, 38, 29, 0.25);
+}
+
+.fav__reason:last-child {
+    border-bottom: 1px solid rgba(64, 38, 29, 0.25);
+}
+
+.fav__num {
+    flex: 0 0 auto;
+    min-width: 40px;
+    font-family: var(--font-display);
+    font-size: 26px;
+    line-height: 1.1;
+}
+
+.fav__reason-title {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.fav__reason-text {
+    margin-top: 4px;
+    font-size: 13px;
+    line-height: 1.65;
+    opacity: 0.85;
+}
+
+.fav__buy {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px 28px;
+    margin-top: 10px;
+}
+
+.fav__name {
+    font-family: var(--font-display);
+    font-size: 24px;
+    line-height: 1.2;
+}
+
+.fav__price {
+    margin-top: 2px;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.fav__order {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    height: 44px;
+    padding: 0 20px;
+    border-radius: 100px;
+    background: var(--color-brown);
+    color: var(--color-cream);
+    font-weight: 600;
+    font-size: 12px;
+    white-space: nowrap;
+    transition: transform 200ms;
+}
+
+.fav__order img {
+    filter: brightness(0) invert(1);
+}
+
+.fav__order:hover {
+    transform: translateY(-2px);
+}
+
+.fav__order:focus-visible {
+    outline: 2px solid var(--color-brown);
+    outline-offset: 3px;
+}
+
+/* ---------- Gelas yang terbang (dibuat oleh favorite.js) ---------- */
+.fav-flight {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 0;
+    z-index: 30;
+    pointer-events: none;
+}
+
+.fav-flyer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: auto;
+    max-width: none;
+    transform-origin: 50% 50%;
+    will-change: transform;
+    visibility: hidden;   /* baru tampil setelah diposisikan oleh favorite.js */
+}
+
+.fav-js .fav-flyer {
+    visibility: visible;
+}
+
+/* Saat efek terbang aktif, gelas asli di kartu menu dan di panggung disembunyikan
+   (digantikan oleh gelas yang terbang). Tanpa JavaScript keduanya tetap tampil. */
+.fav-js .product__cutout[data-fly-source],
+.fav-js .fav__cup {
+    visibility: hidden;
+}
+
+/* ---------- Responsif ---------- */
+@media (max-width: 900px) {
+    .fav__inner {
+        grid-template-columns: 1fr;
+    }
+
+    .fav__stage {
+        --slot: clamp(200px, 56vw, 320px);
+    }
+}

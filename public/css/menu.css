@@ -1,0 +1,266 @@
+/* =====================================================
+   MENU
+   ===================================================== */
+
+.menu {
+    background: var(--color-brown-deep);
+    color: var(--color-cream);
+}
+
+.menu__inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: clamp(56px, 6.11vw, 88px) clamp(20px, 4.44vw, 64px) clamp(48px, 5vw, 72px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(32px, 3.06vw, 44px);
+}
+
+/* ---------- Pengantar ---------- */
+.menu__intro {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.menu__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 700px;
+}
+
+.menu__eyebrow {
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 1.8px;
+    white-space: nowrap;
+}
+
+.menu__title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(40px, 4.58vw, 66px);
+    line-height: 1.1;
+    color: var(--color-yellow);
+}
+
+.menu__title span {
+    display: block;
+}
+
+.menu__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    width: 350px;
+    max-width: 100%;
+}
+
+.menu__lead {
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.menu__note {
+    font-size: 11px;
+    line-height: 1.6;
+    color: var(--color-yellow);
+}
+
+/* ---------- Daftar produk ---------- */
+.menu__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(20px, 2.78vw, 40px);
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+/* Foto produk: ukuran diskalakan dari desain Figma (lebar kartu 298px) */
+.product__portrait {
+    --m: calc(100cqw / 298);
+    container-type: inline-size;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 298 / 310;
+    overflow: hidden;
+}
+
+.product__backdrop {
+    position: absolute;
+    left: calc(12 * var(--m));
+    top: calc(110 * var(--m));
+    width: calc(268 * var(--m));
+    height: calc(200 * var(--m));
+    border-radius: calc(10 * var(--m));
+    background: var(--color-cream);
+}
+
+.product__backdrop--yellow {
+    background: var(--color-yellow);
+}
+
+.product__badge {
+    position: absolute;
+    left: calc(169.08 * var(--m));
+    top: calc(48 * var(--m));
+    width: calc(105.894 * var(--m));
+    height: calc(42.062 * var(--m));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product__badge span {
+    display: block;
+    padding: calc(8 * var(--m)) calc(12 * var(--m));
+    border-radius: 100px;
+    background: var(--color-cream);
+    color: var(--color-brown);
+    font-weight: 700;
+    font-size: calc(10 * var(--m));
+    white-space: nowrap;
+    transform: rotate(8deg);
+}
+
+.product__photo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: calc(292 * var(--m));
+    height: 100%;
+    overflow: hidden;
+}
+
+.product__photo img {
+    position: absolute;
+    top: calc(-388.2 * var(--m));
+    width: calc(1480 * var(--m));
+    height: calc(1110 * var(--m));
+    max-width: none;
+}
+/* Gelas terpisah untuk produk unggulan (dipindah oleh public/js/favorite.js) */
+.product__cutout {
+    position: absolute;
+    height: auto;
+    max-width: none;
+}
+
+/* Gelas full body (produk dari hero): berdiri di dasar kartu */
+.product__cup {
+    position: absolute;
+    left: calc(146 * var(--m));
+    bottom: calc(11 * var(--m));
+    height: calc(232 * var(--m));
+    width: auto;
+    max-width: none;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 calc(8 * var(--m)) calc(10 * var(--m)) rgba(64, 38, 29, 0.28));
+}
+
+/* ---------- Detail produk ---------- */
+.product__details {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 24px 12px 0;
+}
+
+.product__name {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 29px;
+    line-height: normal;
+}
+
+.product__price {
+    font-weight: 600;
+    font-size: 17px;
+    white-space: nowrap;
+    color: var(--color-yellow);
+}
+
+.product__desc {
+    flex: 1 1 auto;
+    min-height: 66px;
+    font-size: 13px;
+    line-height: 1.65;
+    opacity: 0.85;
+}
+
+.product__order {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    height: 44px;
+    padding: 0 20px;
+    border-radius: 100px;
+    background: var(--color-cream);
+    color: var(--color-green);
+    font-weight: 600;
+    font-size: 12px;
+    white-space: nowrap;
+    transition: transform 200ms;
+}
+
+.product__order:hover {
+    transform: translateY(-2px);
+}
+
+.product__order:focus-visible {
+    outline: 2px solid var(--color-yellow);
+    outline-offset: 3px;
+}
+
+/* ---------- Catatan bawah ---------- */
+.menu__footnote {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 28px;
+    border-top: 1px solid var(--color-cream);
+    font-size: 11px;
+}
+
+.menu__footnote p:first-child {
+    letter-spacing: 1.1px;
+}
+
+/* ---------- Responsif ---------- */
+@media (max-width: 1100px) {
+    .menu__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        row-gap: 48px;
+    }
+}
+
+@media (max-width: 900px) {
+    .menu__intro {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu__copy {
+        width: 100%;
+        max-width: 520px;
+    }
+}
+
+@media (max-width: 560px) {
+    .menu__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .menu__footnote {
+        flex-direction: column;
+    }
+}

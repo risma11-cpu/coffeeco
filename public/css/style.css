@@ -1,0 +1,62 @@
+/* ===== Variabel desain (diambil dari Figma) ===== */
+:root {
+    --color-cream: #faf2e2;
+    --color-green: #075538;
+    --color-brown: #40261d;
+    --color-brown-deep: #582b20;
+    --color-muted: #796557;
+    --color-yellow: #f5dc78;
+    --color-coral: #e98270;
+    --color-line: #dccdb9;
+
+    --font-display: 'Anton', Impact, 'Arial Narrow', sans-serif;
+    --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+/* ===== Reset ringan ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    background: var(--color-cream);
+    color: var(--color-brown);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}

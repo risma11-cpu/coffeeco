@@ -1,0 +1,338 @@
+/* =====================================================
+   ADMIN (login + dashboard)
+   Memakai variabel warna dari style.css
+   ===================================================== */
+
+.admin-body {
+    min-height: 100vh;
+    background: var(--color-cream);
+    color: var(--color-brown);
+}
+
+/* ---------- Tombol & form ---------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 52px;
+    padding: 0 28px;
+    border: 0;
+    border-radius: 100px;
+    background: var(--color-green);
+    color: var(--color-cream);
+    font-weight: 600;
+    font-size: 14px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: transform 200ms, opacity 200ms;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--color-brown);
+    outline-offset: 3px;
+}
+
+.btn--block {
+    width: 100%;
+}
+
+.btn--ghost {
+    height: 40px;
+    padding: 0 18px;
+    border: 1px solid var(--color-green);
+    background: transparent;
+    color: var(--color-green);
+    font-size: 13px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.field label {
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.6px;
+    color: var(--color-green);
+}
+
+.field input {
+    height: 48px;
+    padding: 0 16px;
+    border: 1px solid var(--color-line);
+    border-radius: 12px;
+    background: #fff;
+    color: var(--color-brown);
+    font: inherit;
+    font-size: 15px;
+    transition: border-color 200ms, box-shadow 200ms;
+}
+
+.field input:focus {
+    outline: none;
+    border-color: var(--color-green);
+    box-shadow: 0 0 0 3px rgba(7, 85, 56, 0.15);
+}
+
+.field--error input {
+    border-color: #b03a2e;
+}
+
+.field__error {
+    font-size: 12px;
+    color: #b03a2e;
+}
+
+/* ---------- Halaman login ---------- */
+.login {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+}
+
+.login__card {
+    width: 100%;
+    max-width: 420px;
+    padding: 40px 32px 32px;
+    border: 1px solid var(--color-line);
+    border-radius: 22px;
+    background: #fff;
+    box-shadow: 0 24px 60px rgba(88, 43, 32, 0.08);
+}
+
+.login__brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.login__seal {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--color-green);
+    color: var(--color-cream);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 11px;
+    line-height: 1;
+    text-align: center;
+}
+
+.login__seal span {
+    display: block;
+}
+
+.login__name {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--color-green);
+}
+
+.login__title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1.05;
+    color: var(--color-green);
+}
+
+.login__sub {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-muted);
+}
+
+.login__form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 28px;
+}
+
+.login__back {
+    display: block;
+    margin-top: 22px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--color-muted);
+    transition: color 200ms;
+}
+
+.login__back:hover {
+    color: var(--color-green);
+}
+
+.alert {
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.alert--error {
+    background: #fbe9e6;
+    color: #8f2d22;
+}
+
+.alert--success {
+    background: #e3f1ea;
+    color: var(--color-green);
+}
+
+/* ---------- Kerangka admin ---------- */
+.admin-bar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid var(--color-line);
+    background: rgba(250, 242, 226, 0.92);
+    backdrop-filter: blur(8px);
+}
+
+.admin-bar__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.admin-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--color-green);
+}
+
+.admin-brand .login__seal {
+    width: 38px;
+    height: 38px;
+    font-size: 9px;
+}
+
+.admin-nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.admin-nav form {
+    margin: 0;
+}
+
+.admin-nav a {
+    color: var(--color-muted);
+    transition: color 200ms;
+}
+
+.admin-nav a:hover,
+.admin-nav a.is-active {
+    color: var(--color-green);
+}
+
+.admin-main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px 72px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.admin-head h1 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 44px;
+    line-height: 1.05;
+    color: var(--color-green);
+}
+
+.admin-head p {
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--color-muted);
+}
+
+/* ---------- Dashboard ---------- */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.stat {
+    padding: 24px;
+    border: 1px solid var(--color-line);
+    border-radius: 18px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.stat__label {
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 1.2px;
+    color: var(--color-green);
+}
+
+.stat__value {
+    font-family: var(--font-display);
+    font-size: 48px;
+    line-height: 1;
+    color: var(--color-brown);
+}
+
+.stat__hint {
+    font-size: 12px;
+    color: var(--color-muted);
+}
+
+.panel {
+    padding: 24px;
+    border: 1px solid var(--color-line);
+    border-radius: 18px;
+    background: #fff;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--color-muted);
+}
+
+.panel strong {
+    color: var(--color-brown);
+}
+
+@media (max-width: 760px) {
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-head h1 {
+        font-size: 36px;
+    }
+
+    .admin-bar__inner {
+        flex-wrap: wrap;
+    }
+}
